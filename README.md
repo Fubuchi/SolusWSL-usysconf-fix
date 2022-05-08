@@ -59,7 +59,7 @@ Grab the kernel source from [microsoft/WSL2-Linux-Kernel](https://github.com/mic
 Then update this [file](https://github.com/microsoft/WSL2-Linux-Kernel/blob/linux-msft-wsl-5.10.y/Microsoft/config-wsl) with
 
 ```
-ONFIG_SECURITY_APPARMOR=y
+CONFIG_SECURITY_APPARMOR=y
 CONFIG_AUDIT=y
 ```
 
