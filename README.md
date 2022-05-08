@@ -56,7 +56,7 @@ The compiled binary is in ./build/src
 
 Grab the kernel source from [microsoft/WSL2-Linux-Kernel](https://github.com/microsoft/WSL2-Linux-Kernel)
 
-Then update this [file](https://github.com/Fubuchi/WSL2-Linux-Kernel/blob/linux-msft-wsl-5.10.y/Microsoft/config-wsl) with
+Then update this [file](https://github.com/microsoft/WSL2-Linux-Kernel/blob/linux-msft-wsl-5.10.y/Microsoft/config-wsl) with
 
 ```
 ONFIG_SECURITY_APPARMOR=y
@@ -88,7 +88,7 @@ Install apparmor
 sudo eopkg it apparmor
 ```
 
-Shutdown all WSL instance to run the new kernel
+Shutdown all WSL instances to run the new kernel
 
 ```
 wsl --shutdown
