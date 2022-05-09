@@ -10,9 +10,11 @@ But for me, it is annoying to see red texts on the screen every day, so I tried 
 
 To fix this, we need:
 
-- Enable systemd
-- Patch clr-boot-manager
-- Use a kernel with apparmor enabled and enable apparmor
+1. Enable systemd
+2. Patch clr-boot-manager
+3. Use a kernel with apparmor enabled and enable apparmor
+
+**Step 1 and 2 are not needed if using the latest version of SolusWSL**
 
 ## Enable systemd
 
