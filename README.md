@@ -107,3 +107,45 @@ kernelCommandLine=apparmor=1 security=apparmor
 Finally, open SolusWSL and verify the fix works:
 
 ![](result.png)
+
+## WSLg
+
+While using the minimal systemd setup with WSLg, I noticed that after systemd started, the symlink `/tmp/.X11-unix -> /mnt/wslg/.X11-unix` which required for WSLg to work was removed and an actual `/tmp/.X11-unix` folder was created.
+
+To fix this, we need to follow this [link](https://github.com/microsoft/wslg/wiki/Diagnosing-%22cannot-open-display%22-type-issues-with-WSLg)
+
+But we need to do this again everytime WSL shutdowns and restarts. To avaoid this we can create a service
+
+The symlink existed by default if you enable WSLg, but was removed after we start systemd, so we need to wait until it was removed and recreat it
+
+`/usr/bin/wslg-init.sh`
+```
+#!/bin/bash
+timeout 10 bash <<"EOF"
+while [[ -L /tmp/.X11-unix ]]
+do
+    sleep 1
+done
+EOF
+
+if [[ -d /tmp/.X11-unix ]]  && [[ ! -L /tmp/.X11-unix ]]; then
+    rm -r /tmp/.X11-unix
+    ln -s /mnt/wslg/.X11-unix /tmp/.X11-unix
+fi
+```
+`/usr/lib/systemd/system/wslg-init.service`
+```
+[Unit]
+Description=Check and recreat wslg symlink
+
+[Service]
+ExecStart=/usr/bin/wslg-init.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable wslg-init.service 
+```
