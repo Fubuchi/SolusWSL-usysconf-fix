@@ -32,7 +32,7 @@ I use the minimal setup. since I have no other use for systemd.
 
 ### Update 25.10.2022
 
-WSL version 0.67.6 and above officially supprt systemd, to enable, follow this [link](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/)
+WSL version 0.67.6 and above officially supprts systemd, to enable, follow this [link](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/)
 
 ## Patch clr-boot-manager
 
@@ -156,4 +156,4 @@ sudo systemctl enable wslg-init.service
 
 ### Update 25.10.2022
 
-If you are using WSL version 0.67.6 and above, just the official systemd support, this should work out of the box and should not cause any conflict with WSLg
+If you are using WSL version 0.67.6 and above, just use the official systemd support, this should work out of the box and should not cause any conflict with WSLg
