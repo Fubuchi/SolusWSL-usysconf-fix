@@ -114,8 +114,6 @@ Finally, open SolusWSL and verify the fix works:
 
 ## WSLg
 
-### Update
-
 While using the minimal systemd setup with WSLg, I noticed that after systemd started, the symlink `/tmp/.X11-unix -> /mnt/wslg/.X11-unix` which required for WSLg to work was removed and an actual `/tmp/.X11-unix` folder was created.
 
 To fix this, we need to follow this [link](https://github.com/microsoft/wslg/wiki/Diagnosing-%22cannot-open-display%22-type-issues-with-WSLg)
