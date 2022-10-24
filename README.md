@@ -30,6 +30,10 @@ If genie doesn't work for you, give the script above a try. However, it uses `[b
 
 I use the minimal setup. since I have no other use for systemd.
 
+### Update 25.10.2022
+
+WSL version 0.67.6 and above officially supprt systemd, to enable, follow this [link](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/)
+
 ## Patch clr-boot-manager
 
 Information: [link](https://github.com/Fubuchi/clr-boot-manager/blob/master/README.md)
@@ -110,6 +114,8 @@ Finally, open SolusWSL and verify the fix works:
 
 ## WSLg
 
+### Update
+
 While using the minimal systemd setup with WSLg, I noticed that after systemd started, the symlink `/tmp/.X11-unix -> /mnt/wslg/.X11-unix` which required for WSLg to work was removed and an actual `/tmp/.X11-unix` folder was created.
 
 To fix this, we need to follow this [link](https://github.com/microsoft/wslg/wiki/Diagnosing-%22cannot-open-display%22-type-issues-with-WSLg)
@@ -149,3 +155,7 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl enable wslg-init.service 
 ```
+
+### Update 25.10.2022
+
+If you are using WSL version 0.67.6 and above, just the official systemd support, this should work out of the box and should not cause any conflict with WSLg
